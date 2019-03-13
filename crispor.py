@@ -437,7 +437,6 @@ def setupPamInfo(pam):
         if pamOpt=="18":
             GUIDELEN=18
             cpf1Mode = False
-            saCas9Mode = True
         else:
             GUIDELEN=20
             cpf1Mode = False
