@@ -434,8 +434,8 @@ def setupPamInfo(pam):
         GUIDELEN = 24
         cpf1Mode = False
     elif pamOpt=="18":
-            GUIDELEN=18
-            cpf1Mode = False
+        GUIDELEN=18
+        cpf1Mode = False
     else:
         GUIDELEN=20
         cpf1Mode = False
