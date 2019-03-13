@@ -157,7 +157,7 @@ ALTSEQ = 'ATTCTACTTTTCAACAATAATACATAAACatattggcttgtggtagCAACACTATCATGGTATCACTAAC
         # added after the pam, e.g. "NGG-BE1". setupPamInfo(pam) will set the globals
         # based on it
 
-pamDesc = [('NGG-20','18bp-NGG - Sp Cas9, Gallant Lab Protocol'),
+pamDesc = [('NGG-18','18bp-NGG - Sp Cas9, Gallant Lab Protocol'),
          ('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
          ('NNG','20bp-NNG - Cas9 S. canis'),
          ('NNGT','20bp-NNGT - Cas9 S. canis - high efficiency PAM, recommended'),
@@ -742,7 +742,7 @@ def cgiGetParams():
             cgiParams[key] = val
 
     if "pam" in cgiParams:
-        legalChars = set("ACTGNMKRYVBE120345/-")
+        legalChars = set("ACTGNMKRYVBE1203458/-")
         illegalChars = set(cgiParams["pam"])-legalChars
         #if len(illegalChars)!=0:
             #errAbort("Illegal character in PAM-sequence. Only %s are allowed."+"".join(legalChars))
