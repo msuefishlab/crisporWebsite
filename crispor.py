@@ -153,8 +153,7 @@ DEFAULTSEQ = 'cttcctttgtccccaatctgggcgcgcgccggcgccccctggcggcctaaggactcggcgcgccgg
 ALTORG = 'sacCer3'
 ALTSEQ = 'ATTCTACTTTTCAACAATAATACATAAACatattggcttgtggtagCAACACTATCATGGTATCACTAACGTAAAAGTTCCTCAATATTGCAATTTGCTTGAACGGATGCTATTTCAGAATATTTCGTACTTACACAGGCCATACATTAGAATAATATGTCACATCACTGTCGTAACACTCT'
 
-pamDesc = [ ('NGG','18bp-NGG - Sp Cas9, Gallant Lab Protocol'),
-         ('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
+pamDesc = [ ('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
          ('NNG','20bp-NNG - Cas9 S. canis'),
          ('NNGT','20bp-NNGT - Cas9 S. canis - high efficiency PAM, recommended'),
          ('NAA','20bp-NAA - iSpyMacCas9'),
@@ -7194,69 +7193,69 @@ def printValidationPcrSection(batchId, genome, pamId, position, params,
 
     return targetSeq, guideStartOnTarget, guideEndOnTarget
 
-# def printEnzymeSection(mutEnzymes, targetSeq, guideSeqWPam, guideStartOnTarget, guideEndOnTarget):
-#     " print the section about restriction enzymes in the target seq "
-#     print "<h2 id='restrSites'>Restriction Sites for PCR product validation</h2>"
-#
-#     print "Cas9 induces mutations, usually 3bp 5' of the PAM site."
-#     print "If a mutation is induced, then it is very likely that one of the following enzymes no longer cuts your PCR product amplified from the mutant sequence."
-#     print "For each restriction enzyme, the guide sequence with the restriction site underlined is shown below.<p>"
-#
-#     print "<table>"
-#     print "<tr>"
-#     print "<th>Enzyme</th><th>Pattern</th><th>Guide with Restriction Site</th><th>Suppliers</th>"
-#     print "</tr>"
-#     allSitePos = set()
-#     patList = []
-#     for (enzName, pattern, suppliers), posList in mutEnzymes.iteritems():
-#         print "<tr>"
-#         patList.append((enzName, pattern))
-#         print "<td>%s</td><td>%s</td>" % (enzName, pattern)
-#
-#         print "<td><tt>"
-#         guideHtmls = []
-#         for start, end in posList:
-#             annots = defaultdict(dict)
-#             annots[(start, end)]["css"] = {"font-weight":"bold"}
-#             guideHtmls.append( markupSeq(guideSeqWPam.upper(), [], [], annots))
-#             #print guideSeqWPam
-#             #if strand=="-":
-#                 #allSitePos.add( (guideEnd-end, guideEnd-start) )
-#             #else:
-#             allSitePos.add( (guideStartOnTarget, guideEndOnTarget) )
-#
-#
-#         print ", ".join(guideHtmls)
-#         print "</tt></td>"
-#
-#         supplNames = [rebaseSuppliers.get(x, x) for x in suppliers]
-#         print "<td>%s</td>" % ", ".join(sorted(supplNames))
-#         print "</tr>"
-#         #print "<br>"
-#     print "</table>"
-#
-#     print "<h3>All restriction enzyme sites on the amplicon sequence</h3>"
-#     print "Restriction sites are shown in yellow, the guide sequence is highlighted in bold. Use this schema to check if the sites are unique enough to give separate bands on a gel:<p>"
-#
-#     for enzName, pat in patList:
-#         annots = defaultdict(dict)
-#         fragLens = []
-#         lastEnd = 0
-#         for pos in findPat(targetSeq, pat):
-#             start = pos
-#             end = pos+len(pat)
-#             annots[(start, end)]["css"] = {"background-color":"yellow"}
-#
-#             fragLens.append( str(start - lastEnd)+"bp" )
-#             lastEnd = end
-#         #print markupSeq(targetSeq, [], [(guideStart, guideEnd)], annots)
-#         #annots[(guideStart, guideEnd)]["css"] = {"font-weight":"bold"}
-#         fragLens.append( str(len(targetSeq) - lastEnd)+"bp" )
-#
-#         print("<div style='margin-top: 6px'>Enzyme: <strong>%s</strong>, Site: %s, Restriction fragment lengths: %s<br>" % (enzName, pat, ", ".join(fragLens)))
-#         print "<tt>"
-#         print markupSeq(targetSeq, [], [(guideStartOnTarget, guideEndOnTarget)], annots)
-#         print "</tt><br></div>"
+def printEnzymeSection(mutEnzymes, targetSeq, guideSeqWPam, guideStartOnTarget, guideEndOnTarget):
+    " print the section about restriction enzymes in the target seq "
+    print "<h2 id='restrSites'>Restriction Sites for PCR product validation</h2>"
+
+    print "Cas9 induces mutations, usually 3bp 5' of the PAM site."
+    print "If a mutation is induced, then it is very likely that one of the following enzymes no longer cuts your PCR product amplified from the mutant sequence."
+    print "For each restriction enzyme, the guide sequence with the restriction site underlined is shown below.<p>"
+
+    print "<table>"
+    print "<tr>"
+    print "<th>Enzyme</th><th>Pattern</th><th>Guide with Restriction Site</th><th>Suppliers</th>"
+    print "</tr>"
+    allSitePos = set()
+    patList = []
+    for (enzName, pattern, suppliers), posList in mutEnzymes.iteritems():
+        print "<tr>"
+        patList.append((enzName, pattern))
+        print "<td>%s</td><td>%s</td>" % (enzName, pattern)
+
+        print "<td><tt>"
+        guideHtmls = []
+        for start, end in posList:
+            annots = defaultdict(dict)
+            annots[(start, end)]["css"] = {"font-weight":"bold"}
+            guideHtmls.append( markupSeq(guideSeqWPam.upper(), [], [], annots))
+            #print guideSeqWPam
+            #if strand=="-":
+                #allSitePos.add( (guideEnd-end, guideEnd-start) )
+            #else:
+            allSitePos.add( (guideStartOnTarget, guideEndOnTarget) )
+
+
+        print ", ".join(guideHtmls)
+        print "</tt></td>"
+
+        supplNames = [rebaseSuppliers.get(x, x) for x in suppliers]
+        print "<td>%s</td>" % ", ".join(sorted(supplNames))
+        print "</tr>"
+        #print "<br>"
+    print "</table>"
+
+    print "<h3>All restriction enzyme sites on the amplicon sequence</h3>"
+    print "Restriction sites are shown in yellow, the guide sequence is highlighted in bold. Use this schema to check if the sites are unique enough to give separate bands on a gel:<p>"
+
+    for enzName, pat in patList:
+        annots = defaultdict(dict)
+        fragLens = []
+        lastEnd = 0
+        for pos in findPat(targetSeq, pat):
+            start = pos
+            end = pos+len(pat)
+            annots[(start, end)]["css"] = {"background-color":"yellow"}
+
+            fragLens.append( str(start - lastEnd)+"bp" )
+            lastEnd = end
+        #print markupSeq(targetSeq, [], [(guideStart, guideEnd)], annots)
+        #annots[(guideStart, guideEnd)]["css"] = {"font-weight":"bold"}
+        fragLens.append( str(len(targetSeq) - lastEnd)+"bp" )
+
+        print("<div style='margin-top: 6px'>Enzyme: <strong>%s</strong>, Site: %s, Restriction fragment lengths: %s<br>" % (enzName, pat, ", ".join(fragLens)))
+        print "<tt>"
+        print markupSeq(targetSeq, [], [(guideStartOnTarget, guideEndOnTarget)], annots)
+        print "</tt><br></div>"
 
 def printCloningSection(batchId, primerGuideName, guideSeq, params):
     " print the cloning/expression section of the primer page "
