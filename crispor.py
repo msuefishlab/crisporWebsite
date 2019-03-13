@@ -153,7 +153,11 @@ DEFAULTSEQ = 'cttcctttgtccccaatctgggcgcgcgccggcgccccctggcggcctaaggactcggcgcgccgg
 ALTORG = 'sacCer3'
 ALTSEQ = 'ATTCTACTTTTCAACAATAATACATAAACatattggcttgtggtagCAACACTATCATGGTATCACTAACGTAAAAGTTCCTCAATATTGCAATTTGCTTGAACGGATGCTATTTCAGAATATTTCGTACTTACACAGGCCATACATTAGAATAATATGTCACATCACTGTCGTAACACTCT'
 
-pamDesc = [ ('NGG','18bp-NGG - Sp Cas9, Gallant Lab Protocol'),
+        # pamDesc can include additional options, like guidelen and base editor
+        # added after the pam, e.g. "NGG-BE1". setupPamInfo(pam) will set the globals
+        # based on it
+
+pamDesc = [ ('NGG-18','18bp-NGG - Sp Cas9, Gallant Lab Protocol'),
          ('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
          ('NNG','20bp-NNG - Cas9 S. canis'),
          ('NNGT','20bp-NNGT - Cas9 S. canis - high efficiency PAM, recommended'),
@@ -430,8 +434,12 @@ def setupPamInfo(pam):
         GUIDELEN = 24
         cpf1Mode = False
     else:
-        GUIDELEN = 20
-        cpf1Mode = False
+        if pamOpt=="18":
+            GUIDELEN = 18
+            cpf1Mode = False
+        else:
+            GUIDELEN = 20
+            cpf1Mode = False
 
     return pam
 
