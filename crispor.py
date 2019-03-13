@@ -4774,7 +4774,7 @@ def crisprSearch(params):
     otDone = getOfftargets(uppSeq, org, pamDesc, batchId, startDict, None)
 
     if otDone is None:
-        # this can happen only in CGI mode. Job has been added to the queue or is not done yet. 
+        # this can happen only in CGI mode. Job has been added to the queue or is not done yet.
         #startAjaxWait(batchId)
         printStatus(batchId, warnMsg)
         return
@@ -7293,70 +7293,70 @@ def printCloningSection(batchId, primerGuideName, guideSeq, params):
 
     print('Do not use G-prefixing with high-fidelity Cas9 Variants like HF1 and eSpCas9 1.1 when this adds a mismatch in the genome as the efficiency will most likely be very low.')
 
-    # MAMMALIAN CELLS
-    print "<h3 id='u6plasmid'>U6 expression from an Addgene plasmid</h3>"
-    if "tttt" in guideSeq.lower():
-        print "The guide sequence %s contains the motif TTTT, which terminates RNA polymerase. This guide sequence cannot be transcribed in mammalian cells." % guideSeq
-    else:
-        print "The guide sequence %s does not contain the motif TTTT, which terminates RNA polymerase, so it can be transcribed in mammalian cells." % guideSeq
-
-        print "<br>"
-        if not cpf1Mode:
-            print("""<p><form style="margin-bottom: 0px" id="plasmidForm" action="%s#u6plasmid" method="GET">""" %
-                basename(__file__))
-            print "Select your Addgene plasmid: "
-
-            # we need a separate form here (not PCR form), as the target anchor
-            # to jump to after a submit is different
-            plasmidNames = [(x,y) for x,(y,z) in addGenePlasmids]
-            printDropDown("plasmid", plasmidNames, plasmid, onChange="""$('#submitPlasmidForm').click()""")
-            printHiddenFields(cgiParams, {"plasmid":None, "submit":None})
-            print("""<input id="submitPlasmidForm" style="display:none" type="submit" name="submit" value="submit">""")
-            print("""</form></p>""")
-
-            print("<p>To clone the guide into <i><a href='https://www.addgene.org/%s/'>%s</a></i>, use these primers:" % (plasmid, plasmidToName[plasmid][0]))
-        else:
-            print "To express guide RNA for Cpf1 in mammalian cells, two plasmids are available. To clone the guide RNA sequence into the plasmids <a href='https://www.addgene.org/78956/'>pU6-As-crRNA</a> or <a href='https://www.addgene.org/78957/'>pU6-Lb-crRNA</a>, where guide RNA expression is driven by a human U6 promoter, the following primers should be used :"
-
-        print "<br>"
-        if "mammCellsNote" in primers:
-            print("<strong>Note:</strong> Efficient transcription from the U6 promoter requires a 5' G. This G has been added in the sequence below, it is underlined. For a full discussion about G- prefixing, see the discussion of G-prefixing under <a href='#t7oligo'>overlapping oligonucleotides</a>. Do not use G- prefixing with the high-fidelity Cas9 variants HF1 and eSpCas9 1.1<br>")
-
-        printPrimerTable(primers["mammCells"])
-
-        _, _, _, enzyme, protoUrl = addGenePlasmidInfo[plasmid]
-        print("The plasmid has to be digested with: <i>%s</i><br>" % enzyme)
-        print("<a href='%s'>Click here</a> to download the cloning protocol for <i>%s</i>" % (protoUrl, plasmidToName[plasmid][0]))
-
-    if not cpf1Mode:
-        print "<h3 id='ciona'>Direct PCR for <i>C. intestinalis</i></h3>"
-        print ("""Only usable at the moment in <i>Ciona intestinalis</i> (alias <i>Ciona robusta</i>). DNA construct is assembled during the PCR reaction; expression cassettes are generated with One-Step Overlap PCR (OSO-PCR) <a href="http://www.sciencedirect.com/science/article/pii/S0012160616306455">Gandhi et al., Dev Bio 2016</a> (<a href="http://biorxiv.org/content/early/2017/01/01/041632">preprint</a>) following <a href="downloads/prot/cionaProtocol.pdf">this protocol</a>. The resulting unpurified PCR product can be directly electroporated into Ciona eggs.<br>""")
-        if batchName!="":
-            primerStart = batchName
-        else:
-            primerStart = "sg"
-        ciPrimers = [
-            (batchName+".%s.sgF" % primerGuideName, "g<b>"+guideSeq[1:]+"</b>gtttaagagctatgctggaaacag"),
-            (batchName+".%s.U6R" % primerGuideName, "<b>"+revComp(guideSeq[1:])+"</b>catctataccatcggatgccttc")
-        ]
-        printPrimerTable(ciPrimers)
-
-    print "<h3 id='gibson'>Lentiviral vectors: cloning with Gibson assembly</h3>"
-    print ("""Order the following oligonucleotide to clone with Gibson assembly into the vector <a href='https://www.addgene.org/52963/'>pLentiGuide-puro</a>. See the <a href="https://www.nature.com/articles/nprot.2018.005">protocol by Matt Canver</a>.<br>""")
-    print ("""To clone with restriction enzymes into this vector, see the section <a href="#u6plasmid">U6 expression from an AddGene plasmid</a> and choose pLentiGuide-puro from the list of AddGene plasmids.<br>""")
-
-    satMutUrl = cgiGetSelfUrl({"satMut":"1"}, onlyParams=["batchId"])
-    print ("""If you use lentiviral vectors, you may be interested in our tools for <a href="%s">saturating mutagenesis</a>"""
-    """ and for <a href="crispor.py?libDesign=1">gene knockout libraries</a>."""  % satMutUrl)
-
-    lentiPrimers = [
-        ("batchOligo%s" % primerGuideName, "<i>GGAAAGGACGAAACACCG</i>"+guideSeq+"<i>GTTTTAGAGCTAGAAATAGCAAGTTAAAATAAGGC</i>"),
-    ]
-
-    printPrimerTable(lentiPrimers, seqType="Oligonucleotide")
-
-    print "<h3 id='primerSummary'>Summary of main cloning/expression primers</h3>"
-    printPrimerTableAll(primers)
+    # # MAMMALIAN CELLS
+    # print "<h3 id='u6plasmid'>U6 expression from an Addgene plasmid</h3>"
+    # if "tttt" in guideSeq.lower():
+    #     print "The guide sequence %s contains the motif TTTT, which terminates RNA polymerase. This guide sequence cannot be transcribed in mammalian cells." % guideSeq
+    # else:
+    #     print "The guide sequence %s does not contain the motif TTTT, which terminates RNA polymerase, so it can be transcribed in mammalian cells." % guideSeq
+    #
+    #     print "<br>"
+    #     if not cpf1Mode:
+    #         print("""<p><form style="margin-bottom: 0px" id="plasmidForm" action="%s#u6plasmid" method="GET">""" %
+    #             basename(__file__))
+    #         print "Select your Addgene plasmid: "
+    #
+    #         # we need a separate form here (not PCR form), as the target anchor
+    #         # to jump to after a submit is different
+    #         plasmidNames = [(x,y) for x,(y,z) in addGenePlasmids]
+    #         printDropDown("plasmid", plasmidNames, plasmid, onChange="""$('#submitPlasmidForm').click()""")
+    #         printHiddenFields(cgiParams, {"plasmid":None, "submit":None})
+    #         print("""<input id="submitPlasmidForm" style="display:none" type="submit" name="submit" value="submit">""")
+    #         print("""</form></p>""")
+    #
+    #         print("<p>To clone the guide into <i><a href='https://www.addgene.org/%s/'>%s</a></i>, use these primers:" % (plasmid, plasmidToName[plasmid][0]))
+    #     else:
+    #         print "To express guide RNA for Cpf1 in mammalian cells, two plasmids are available. To clone the guide RNA sequence into the plasmids <a href='https://www.addgene.org/78956/'>pU6-As-crRNA</a> or <a href='https://www.addgene.org/78957/'>pU6-Lb-crRNA</a>, where guide RNA expression is driven by a human U6 promoter, the following primers should be used :"
+    #
+    #     print "<br>"
+    #     if "mammCellsNote" in primers:
+    #         print("<strong>Note:</strong> Efficient transcription from the U6 promoter requires a 5' G. This G has been added in the sequence below, it is underlined. For a full discussion about G- prefixing, see the discussion of G-prefixing under <a href='#t7oligo'>overlapping oligonucleotides</a>. Do not use G- prefixing with the high-fidelity Cas9 variants HF1 and eSpCas9 1.1<br>")
+    #
+    #     printPrimerTable(primers["mammCells"])
+    #
+    #     _, _, _, enzyme, protoUrl = addGenePlasmidInfo[plasmid]
+    #     print("The plasmid has to be digested with: <i>%s</i><br>" % enzyme)
+    #     print("<a href='%s'>Click here</a> to download the cloning protocol for <i>%s</i>" % (protoUrl, plasmidToName[plasmid][0]))
+    #
+    # if not cpf1Mode:
+    #     print "<h3 id='ciona'>Direct PCR for <i>C. intestinalis</i></h3>"
+    #     print ("""Only usable at the moment in <i>Ciona intestinalis</i> (alias <i>Ciona robusta</i>). DNA construct is assembled during the PCR reaction; expression cassettes are generated with One-Step Overlap PCR (OSO-PCR) <a href="http://www.sciencedirect.com/science/article/pii/S0012160616306455">Gandhi et al., Dev Bio 2016</a> (<a href="http://biorxiv.org/content/early/2017/01/01/041632">preprint</a>) following <a href="downloads/prot/cionaProtocol.pdf">this protocol</a>. The resulting unpurified PCR product can be directly electroporated into Ciona eggs.<br>""")
+    #     if batchName!="":
+    #         primerStart = batchName
+    #     else:
+    #         primerStart = "sg"
+    #     ciPrimers = [
+    #         (batchName+".%s.sgF" % primerGuideName, "g<b>"+guideSeq[1:]+"</b>gtttaagagctatgctggaaacag"),
+    #         (batchName+".%s.U6R" % primerGuideName, "<b>"+revComp(guideSeq[1:])+"</b>catctataccatcggatgccttc")
+    #     ]
+    #     printPrimerTable(ciPrimers)
+    #
+    # print "<h3 id='gibson'>Lentiviral vectors: cloning with Gibson assembly</h3>"
+    # print ("""Order the following oligonucleotide to clone with Gibson assembly into the vector <a href='https://www.addgene.org/52963/'>pLentiGuide-puro</a>. See the <a href="https://www.nature.com/articles/nprot.2018.005">protocol by Matt Canver</a>.<br>""")
+    # print ("""To clone with restriction enzymes into this vector, see the section <a href="#u6plasmid">U6 expression from an AddGene plasmid</a> and choose pLentiGuide-puro from the list of AddGene plasmids.<br>""")
+    #
+    # satMutUrl = cgiGetSelfUrl({"satMut":"1"}, onlyParams=["batchId"])
+    # print ("""If you use lentiviral vectors, you may be interested in our tools for <a href="%s">saturating mutagenesis</a>"""
+    # """ and for <a href="crispor.py?libDesign=1">gene knockout libraries</a>."""  % satMutUrl)
+    #
+    # lentiPrimers = [
+    #     ("batchOligo%s" % primerGuideName, "<i>GGAAAGGACGAAACACCG</i>"+guideSeq+"<i>GTTTTAGAGCTAGAAATAGCAAGTTAAAATAAGGC</i>"),
+    # ]
+    #
+    # printPrimerTable(lentiPrimers, seqType="Oligonucleotide")
+    #
+    # print "<h3 id='primerSummary'>Summary of main cloning/expression primers</h3>"
+    # printPrimerTableAll(primers)
 
 def primerDetailsPage(params):
     """ create primers with primer3 around site identified by pamId in batch
@@ -7421,17 +7421,17 @@ def primerDetailsPage(params):
     print("Contents:<br>")
     print("<ul>")
     print("<li><a href='#cloning'>Cloning or expression of guide RNA</a>")
-    print("<ul><li><a href='#t7plasmid'>T7 <i>in vitro</i> expression from a plasmid</a></li></ul>")
+    #print("<ul><li><a href='#t7plasmid'>T7 <i>in vitro</i> expression from a plasmid</a></li></ul>")
     print("<ul><li><a href='#t7oligo'>T7 <i>in vitro</i> expression from overlapping oligonucleotides</a></li></ul>")
-    print("<ul><li><a href='#u6plasmid'>U6 expression from an Addgene plasmid</a></li></ul>")
-    print("<ul><li><a href='#ciona'>Direct PCR for <i>C. intestinalis</i></a></li></ul>")
-    print("<ul><li><a href='#gibson'>Lentiviral vectors: Cloning with Gibson assembly</a></li></ul>")
+    #print("<ul><li><a href='#u6plasmid'>U6 expression from an Addgene plasmid</a></li></ul>")
+    #print("<ul><li><a href='#ciona'>Direct PCR for <i>C. intestinalis</i></a></li></ul>")
+    #print("<ul><li><a href='#gibson'>Lentiviral vectors: Cloning with Gibson assembly</a></li></ul>")
     print("<ul><li><a href='#primerSummary'>Summary of main cloning/expression primers</a></li></ul>")
     print("<li><a href='#ontargetPcr'>PCR to amplify the on-target site</a></li>")
     if len(mutEnzymes)!=0:
         print("<li><a href='#restrSites'>Restriction sites for PCR validation</a></li>")
     print("<li><a href='#offtargetPcr'>PCR to amplify off-target sites</a></li>")
-    print("<li><a href='#satMut'>Saturating mutagenesis using all guides</a></li>")
+    #print("<li><a href='#satMut'>Saturating mutagenesis using all guides</a></li>")
     print("</ul>")
     print("<hr>")
 
@@ -7450,9 +7450,9 @@ def primerDetailsPage(params):
     offtUrl = cgiGetSelfUrl({"otPrimers":"1"}, onlyParams=["batchId", "pamId"])
     print("<p>Primers for all off-targets can be downloaded from the <a href='%s'>Off-target PCR</a> page.</p>" % offtUrl)
 
-    print("<h2 id='satMut'>Saturating mutagenesis using all guides</h2>")
-    satMutUrl = cgiGetSelfUrl({"satMut":"1"}, onlyParams=["batchId"])
-    print("<p>Oligonucleotides of all guides for pooled cloning into a lentiviral vector can be downloaded from the <a href='%s'>Saturating mutagenesis page</a>.</p>" % satMutUrl)
+    # print("<h2 id='satMut'>Saturating mutagenesis using all guides</h2>")
+    # satMutUrl = cgiGetSelfUrl({"satMut":"1"}, onlyParams=["batchId"])
+    # print("<p>Oligonucleotides of all guides for pooled cloning into a lentiviral vector can be downloaded from the <a href='%s'>Saturating mutagenesis page</a>.</p>" % satMutUrl)
 
     print "<hr>"
 
