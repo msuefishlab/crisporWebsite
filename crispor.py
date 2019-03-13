@@ -157,7 +157,7 @@ ALTSEQ = 'ATTCTACTTTTCAACAATAATACATAAACatattggcttgtggtagCAACACTATCATGGTATCACTAAC
         # added after the pam, e.g. "NGG-BE1". setupPamInfo(pam) will set the globals
         # based on it
 
-pamDesc = [ ('NGG-18','18bp-NGG - Sp Cas9, Gallant Lab Protocol'),
+pamDesc = [('NGG-18','18bp-NGG - Sp Cas9, Gallant Lab Protocol'),
          ('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
          ('NNG','20bp-NNG - Cas9 S. canis'),
          ('NNGT','20bp-NNGT - Cas9 S. canis - high efficiency PAM, recommended'),
@@ -949,7 +949,7 @@ def docTestInit():
     global cpf1Mode
     global GUIDELEN
     cpf1Mode=False
-    GUIDELEN=20
+    GUIDELEN=18
 
 def findPams (seq, pam, strand, startDict, endSet):
     """ return two values: dict with pos -> strand of PAM and set of end positions of PAMs
