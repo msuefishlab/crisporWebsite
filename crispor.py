@@ -7285,7 +7285,7 @@ def printCloningSection(batchId, primerGuideName, guideSeq, params):
 
     print("""T7 RNA polymerase starts transcription most efficiently if the first two nucleotides to be transcribed are GG. A common recommendation is to add the prefix GG- if our guide does not start with G (5'-N20-(NGG)-3'), to add G- if your guide starts with a single G (5'-GN19-(NGG)-3') and to not add anything if your guide starts with GG already (5'-GGN18-(NGG)-3').<p>""")
 
-    #print('One protocol for template preparation from oligonucleotides and in-vitro transcription can be found in <a href="http://www.cell.com/cell-reports/abstract/S2211-1247(13)00312-4">Bassett et al. Cell Rep 2013</a>. We also provide our own <a href="downloads/prot/sgRnaSynthProtocol.pdf">optimized protocol</a> for T7 guide expression.<p>')
+    print('One protocol for template preparation from oligonucleotides and in-vitro transcription can be found in <a href="http://www.cell.com/cell-reports/abstract/S2211-1247(13)00312-4">Bassett et al. Cell Rep 2013</a>. We also provide our own <a href="downloads/prot/sgRnaSynthProtocol.pdf">optimized protocol</a> for T7 guide expression.<p>')
 
     #print('''<a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4038517/?report=classic">Gagnon et al. PLoS ONE 2014</a> prefixed guides with GG to ensure high efficiency in vitro transcription by T7 RNA polymerase. It has been shown by other authors that the 5' nucleotides of the guide have little or no role in target specificity and it is therefore generally accepted that prefixing guides with GG should not affect activity.<br>''')
 
@@ -7428,9 +7428,9 @@ def primerDetailsPage(params):
     #print("<ul><li><a href='#gibson'>Lentiviral vectors: Cloning with Gibson assembly</a></li></ul>")
     print("<ul><li><a href='#primerSummary'>Summary of main cloning/expression primers</a></li></ul>")
     print("<li><a href='#ontargetPcr'>PCR to amplify the on-target site</a></li>")
-    #if len(mutEnzymes)!=0:
+    if len(mutEnzymes)!=0:
         print("<li><a href='#restrSites'>Restriction sites for PCR validation</a></li>")
-    #print("<li><a href='#offtargetPcr'>PCR to amplify off-target sites</a></li>")
+    print("<li><a href='#offtargetPcr'>PCR to amplify off-target sites</a></li>")
     #print("<li><a href='#satMut'>Saturating mutagenesis using all guides</a></li>")
     print("</ul>")
     print("<hr>")
