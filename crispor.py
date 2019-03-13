@@ -745,7 +745,7 @@ def cgiGetParams():
         legalChars = set("ACTGNMKRYVBE120345/-")
         illegalChars = set(cgiParams["pam"])-legalChars
         if len(illegalChars)!=0:
-            errAbort("Illegal character in PAM-sequence. Only %s are allowed."+"".join(legalChars))
+            #errAbort("Illegal character in PAM-sequence. Only %s are allowed."+"".join(legalChars))
     return cgiParams
 
 def cgiGetStr(params, argName, default=None):
