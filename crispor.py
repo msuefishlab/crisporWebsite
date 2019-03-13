@@ -6806,7 +6806,7 @@ def makeHelperPrimers(guideName, guideSeq, plasmid):
     prefix = ""
     if not guideSeq.lower().startswith("g"):
         prefix = "G"
-    specPrimer = "TAATACGACTCACTATA%s<b>%s</b>GTTTTAGAGCTAGAAATAGCAAG" % (prefix, guideSeq)
+    specPrimer = "TAATACGACTCACTATA<i>%s</i><b>%s</b>GTTTTAGAGCTAGAAATAGCAAG" % (prefix, guideSeq)
     #specPrimer = "GAAATTAATACGACTCACTATA%s<b>%s</b>GTTTTAGAGCTAGAAATAGCAAG" % (prefix, guideSeq)
 
     primers["T7iv"].append(("guideRNA%sT7crTarget" % guideName, specPrimer))
