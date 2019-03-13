@@ -153,7 +153,8 @@ DEFAULTSEQ = 'cttcctttgtccccaatctgggcgcgcgccggcgccccctggcggcctaaggactcggcgcgccgg
 ALTORG = 'sacCer3'
 ALTSEQ = 'ATTCTACTTTTCAACAATAATACATAAACatattggcttgtggtagCAACACTATCATGGTATCACTAACGTAAAAGTTCCTCAATATTGCAATTTGCTTGAACGGATGCTATTTCAGAATATTTCGTACTTACACAGGCCATACATTAGAATAATATGTCACATCACTGTCGTAACACTCT'
 
-pamDesc = [ ('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
+pamDesc = [ ('NGG','18bp-NGG - Sp Cas9, Gallant Lab Protocol'),
+         ('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
          ('NNG','20bp-NNG - Cas9 S. canis'),
          ('NNGT','20bp-NNGT - Cas9 S. canis - high efficiency PAM, recommended'),
          ('NAA','20bp-NAA - iSpyMacCas9'),
