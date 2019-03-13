@@ -434,7 +434,7 @@ def setupPamInfo(pam):
         GUIDELEN = 24
         cpf1Mode = False
     elif pamOpt=="18":
-        logging.debug("guide length is 18bp")
+        print "guide length is 18bp"
         GUIDELEN = 18
         cpf1Mode = False
     else:
