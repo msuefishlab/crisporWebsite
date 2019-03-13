@@ -949,7 +949,7 @@ def docTestInit():
     global cpf1Mode
     global GUIDELEN
     cpf1Mode=False
-    GUIDELEN=20
+    GUIDELEN=18
 
 def findPams (seq, pam, strand, startDict, endSet):
     """ return two values: dict with pos -> strand of PAM and set of end positions of PAMs
