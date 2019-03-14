@@ -4903,7 +4903,7 @@ def printCrisporBodyStart():
 def printTeforBodyStart():
     print """<div style="float:left">"""
     #print """<a href='http://genome.ucsc.edu'><img style='vertical-align: top; height: 40px' src='%s/image/ucscBioinf.jpg' alt=''></a>""" % (HTMLPREFIX)
-    print """""" % (HTMLPREFIX)
+    print """<a></a>""" % (HTMLPREFIX)
     print "</div>"
     #print ("""<div style="position: absolute; left:50px; top:30px"><a href='http://tefor.net/'><img style='width:60px' src='%simage/logo_tefor.png' alt=''></a></div>""" % HTMLPREFIX)
     #print """ %s
