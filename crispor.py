@@ -4894,7 +4894,7 @@ def printFile(fname):
     print open(path).read()
 
 def printCrisporBodyStart():
-    print """""" % (HTMLPREFIX)
+    #print """<a href='crispor.py'><img style='width:70px' src='%simage/logo_tefor.png' alt=''></a>""" % (HTMLPREFIX)
     print '<div id="bd">'
     print '<div class="centralpanel" style="margin-left:0px">'
     print '<div class="subpanel" style="background:transparent;box-shadow:none;">'
@@ -4903,7 +4903,7 @@ def printCrisporBodyStart():
 def printTeforBodyStart():
     print """<div style="float:left">"""
     #print """<a href='http://genome.ucsc.edu'><img style='vertical-align: top; height: 40px' src='%s/image/ucscBioinf.jpg' alt=''></a>""" % (HTMLPREFIX)
-    print """<a></a>""" % (HTMLPREFIX)
+    #print """<a href='crispor.py'><img style='width:70px' src='%simage/logo_tefor.png' alt=''></a>""" % (HTMLPREFIX)
     print "</div>"
     #print ("""<div style="position: absolute; left:50px; top:30px"><a href='http://tefor.net/'><img style='width:60px' src='%simage/logo_tefor.png' alt=''></a></div>""" % HTMLPREFIX)
     #print """ %s
