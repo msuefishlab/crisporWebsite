@@ -3904,8 +3904,6 @@ def printForm(params):
     print """
 <form id="main-form" method="post" action="%s">
 
-
-
 <div class="windowstep subpanel" style="width:40%%;">
     <div class="substep">
         <div class="title">
@@ -4924,13 +4922,6 @@ def printTeforBodyStart():
     print '<div class="contentcentral" style="margin-left:0px; width:100%; background:none">'
 
 def printTeforBodyEnd():
-     print("""<div style="text-align:left; margin-left: 10px">
-     CRISPOR (<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1012-2">paper</a>) is a program that helps design, evaluate and clone guide sequences for the CRISPR/Cas9 system. <a target=_blank href="/manual/">CRISPOR Manual</a>
-
-    <br><i>Jan 2019: Fixed CCtop, PAR support <a href="doc/changes.html">Full list of changes</a></i>
-
-     </div>
-     """)
     print '<div style="clear:both; text-align:center">Version %s - ' % versionStr
     print '<a target=_blank href="/manual/">Documentation</a>&nbsp; - '
     print """<a href='mailto:%s'>Contact us</a> - <a href="downloads/">Downloads/local installation</a> - <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1012-2">Paper</a> - <a href="https://github.com/maximilianh/crisporWebsite/blob/master/LICENSE.txt">License</a></div>""" % (contactEmail)
