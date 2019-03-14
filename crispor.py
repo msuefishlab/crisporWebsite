@@ -949,7 +949,7 @@ def docTestInit():
     global cpf1Mode
     global GUIDELEN
     cpf1Mode=False
-    GUIDELEN=18
+    GUIDELEN=20
 
 def findPams (seq, pam, strand, startDict, endSet):
     """ return two values: dict with pos -> strand of PAM and set of end positions of PAMs
@@ -1316,7 +1316,7 @@ def printJson(name, obj):
 
 def showSeqAndPams(org, seq, startDict, pam, guideScores, varHtmls, varDbs, varDb, minFreq, position, pamIdToSeq):
     " show the sequence and the PAM sites underneath in a sequence viewer "
-    pamSeqs = list(flankSeqIter(seq, startDict, len(pam), True,GUIDELEN))
+    pamSeqs = list(flankSeqIter(seq, startDict, len(pam), True))
 
     lines, maxY = distrOnLines(seq.upper(), startDict, len(pam))
 
@@ -1444,7 +1444,7 @@ def iterOneDelSeqs(seq):
             yield i, delSeq
         doneSeqs.add(delSeq)
 
-def flankSeqIter(seq, startDict, pamLen, doFilterNs,GUIDELEN):
+def flankSeqIter(seq, startDict, pamLen, doFilterNs):
     """ given a seq and dictionary of pamPos -> strand and the length of the pamSite
     yield tuples of (name, pamStart, guideStart, strand, flankSeq, pamSeq)
 
@@ -2204,7 +2204,7 @@ def mergeGuideInfo(seq, startDict, pamPat, otMatches, inputPos, effScores, sortB
     hasNotFound = False
     pamIdToSeq = {}
 
-    pamSeqs = list(flankSeqIter(seq.upper(), startDict, len(pamPat), True, GUIDELEN))
+    pamSeqs = list(flankSeqIter(seq.upper(), startDict, len(pamPat), True))
 
     for pamId, pamStart, guideStart, strand, guideSeq, pamSeq, pamPlusSeq in pamSeqs:
         # matches in genome
@@ -3153,7 +3153,7 @@ def writePamFlank(seq, startDict, pam, faFname):
     " write pam flanking sequences to fasta file, optionally with versions where each nucl is removed "
     #print "writing pams to %s<br>" % faFname
     faFh = open(faFname, "w")
-    for pamId, pamStart, guideStart, strand, flankSeq, pamSeq, pamPlusSeq in flankSeqIter(seq, startDict, len(pam), True,GUIDELEN):
+    for pamId, pamStart, guideStart, strand, flankSeq, pamSeq, pamPlusSeq in flankSeqIter(seq, startDict, len(pam), True):
         faFh.write(">%s\n%s\n" % (pamId, flankSeq))
     faFh.close()
 
@@ -3299,7 +3299,7 @@ def annotateBedWithPos(inBed, outBed):
 
 def findAllGuides(seq, pam):
     startDict, endSet = findAllPams(seq, pam)
-    pamInfo = list(flankSeqIter(seq, startDict, len(pam), False,GUIDELEN))
+    pamInfo = list(flankSeqIter(seq, startDict, len(pam), False))
     return pamInfo
 
 def calcGuideEffScores(seq, extSeq, pam):
@@ -5519,7 +5519,7 @@ def writeOntargetAmpliconFile(outType, batchId, ampLen, tm, ofh, fileFormat="tsv
     otMatches = parseOfftargets(db, batchId, chrom)
 
     startDict, endSet = findAllPams(inSeq, pamPat)
-    pamSeqs = list(flankSeqIter(inSeq, startDict, len(pamPat), True,GUIDELEN))
+    pamSeqs = list(flankSeqIter(inSeq, startDict, len(pamPat), True))
 
     allEffScores = readEffScores(batchId)
     guideData, guideScores, hasNotFound, pamIdToSeq = mergeGuideInfo(inSeq, startDict, pamPat, otMatches, position, allEffScores, sortBy="pos", org=db)
@@ -6983,7 +6983,7 @@ def findGuideSeq(inSeq, pam, pamId):
     the sequence with the pam and its strand.
     """
     startDict, endSet = findAllPams(inSeq, pam)
-    pamInfo = list(flankSeqIter(inSeq, startDict, len(pam), False,GUIDELEN))
+    pamInfo = list(flankSeqIter(inSeq, startDict, len(pam), False))
     for guidePamId, pamStart, guideStart, guideStrand, guideSeq, pamSeq, pamPlusSeq in pamInfo:
         if guidePamId!=pamId:
             continue
@@ -7877,7 +7877,7 @@ def mainCommandLine():
 
         # Special batch primer / Crispresso mode
         if options.ampDir:
-            pamSeqs = list(flankSeqIter(seq, startDict, len(pamPat), True),GUIDELEN)
+            pamSeqs = list(flankSeqIter(seq, startDict, len(pamPat), True))
             for pamId, pamStart, guideStart, strand, guideSeq, pamSeq, pamPlusSeq in pamSeqs:
                 cPath = join(options.ampDir, "crispresso_%s_%s.txt" % (seqId, pamId))
                 logging.info("Writing Crispresso table for seq %s, PAM %s to %s" % (seqId, pamId, cPath))
