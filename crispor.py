@@ -157,28 +157,27 @@ ALTSEQ = 'ATTCTACTTTTCAACAATAATACATAAACatattggcttgtggtagCAACACTATCATGGTATCACTAAC
         # added after the pam, e.g. "NGG-BE1". setupPamInfo(pam) will set the globals
         # based on it
 
-pamDesc = [('NGG-18','18bp-NGG - Sp Cas9, Gallant Lab Protocol'),
-         ('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
-         ('NNG','20bp-NNG - Cas9 S. canis'),
-         ('NNGT','20bp-NNGT - Cas9 S. canis - high efficiency PAM, recommended'),
-         ('NAA','20bp-NAA - iSpyMacCas9'),
+pamDesc = [('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
+         #('NNG','20bp-NNG - Cas9 S. canis'),
+         #('NNGT','20bp-NNGT - Cas9 S. canis - high efficiency PAM, recommended'),
+         #('NAA','20bp-NAA - iSpyMacCas9'),
          #('TTN','TTN-23bp - Cpf1 F. Novicida'), # Jean-Paul: various people have shown that it's not usable yet
-         ('NNGRRT','21bp-NNG(A/G)(A/G)T - Cas9 S. Aureus'),
-         ('NNGRRT-20','20bp-NNG(A/G)(A/G)T - Cas9 S. Aureus with 20bp-guides'),
-         ('NGK','20bp-NG(G/T) - xCas9, high efficiency PAM, recommended'),
-         ('NGN','20bp-NGN or GA(A/T) - xCas9, low efficiency PAM'),
+         #('NNGRRT','21bp-NNG(A/G)(A/G)T - Cas9 S. Aureus'),
+         #('NNGRRT-20','20bp-NNG(A/G)(A/G)T - Cas9 S. Aureus with 20bp-guides'),
+         #('NGK','20bp-NG(G/T) - xCas9, high efficiency PAM, recommended'),
+         #('NGN','20bp-NGN or GA(A/T) - xCas9, low efficiency PAM'),
          #('NGG-BE1','20bp-NGG - BaseEditor1, modifies C->T'),
-         ('NNNRRT','21bp-NNN(A/G)(A/G)T - KKH SaCas9'),
-         ('NNNRRT-20','20bp-NNN(A/G)(A/G)T - KKH SaCas9 with 20bp-guides'),
-         ('NGA','20bp-NGA - Cas9 S. Pyogenes mutant VQR'),
-         ('NNNNCC','24bp-NNNNCC - Nme2Cas9, NEW! 2019, A. Edraki'),
-         ('NGCG','20bp-NGCG - Cas9 S. Pyogenes mutant VRER'),
-         ('NNAGAA','20bp-NNAGAA - Cas9 S. Thermophilus'),
-         ('NGGNG','20bp-NGGNG - Cas9 S. Thermophilus'),
-         ('NNNNGMTT','20bp-NNNNG(A/C)TT - Cas9 N. Meningitidis'),
-         ('NNNNACA','20bp-NNNNACA - Cas9 Campylobacter jejuni'),
-         ('TTTV','TTT(A/C/G)-23bp - Cas12a (Cpf1) Acidaminoc. / Lachnosp. - recommended'),
-         ('TTTN','TTTN-23bp - Cas12a (Cpf1) Acidaminoc. / Lachnosp - low efficiency')
+         #('NNNRRT','21bp-NNN(A/G)(A/G)T - KKH SaCas9'),
+         #('NNNRRT-20','20bp-NNN(A/G)(A/G)T - KKH SaCas9 with 20bp-guides'),
+         #('NGA','20bp-NGA - Cas9 S. Pyogenes mutant VQR'),
+         #('NNNNCC','24bp-NNNNCC - Nme2Cas9, NEW! 2019, A. Edraki'),
+         #('NGCG','20bp-NGCG - Cas9 S. Pyogenes mutant VRER'),
+         #('NNAGAA','20bp-NNAGAA - Cas9 S. Thermophilus'),
+         #('NGGNG','20bp-NGGNG - Cas9 S. Thermophilus'),
+         #('NNNNGMTT','20bp-NNNNG(A/C)TT - Cas9 N. Meningitidis'),
+         #('NNNNACA','20bp-NNNNACA - Cas9 Campylobacter jejuni'),
+         #('TTTV','TTT(A/C/G)-23bp - Cas12a (Cpf1) Acidaminoc. / Lachnosp. - recommended'),
+         #('TTTN','TTTN-23bp - Cas12a (Cpf1) Acidaminoc. / Lachnosp - low efficiency')
          #('TYCV','T(C/T)C(A/C/G)-23bp - TYCV As-Cpf1 K607R'),
          #('TATV','TAT(A/C/G)-23bp - TATV As-Cpf1 K548V')
        ]
