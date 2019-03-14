@@ -4894,7 +4894,7 @@ def printFile(fname):
     print open(path).read()
 
 def printCrisporBodyStart():
-    print """<a href='crispor.py'><img style='width:70px' src='%simage/logo_tefor.png' alt=''></a>""" % (HTMLPREFIX)
+    print """""" % (HTMLPREFIX)
     print '<div id="bd">'
     print '<div class="centralpanel" style="margin-left:0px">'
     print '<div class="subpanel" style="background:transparent;box-shadow:none;">'
