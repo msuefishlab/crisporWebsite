@@ -149,11 +149,15 @@ genomesDir = join(baseDir, "genomes")
 DEFAULTORG = 'Bgaud0.1'
 DEFAULTSEQ = 'ATGGCTCGCCTTGTCCCTCCTTCAGGCCCTGAAGTCTTCCATCGCTTTACCTCGGACTCGTTGGCGGAGATCGAGAGACTCGCTGAACTTCAGAAAAGCAAGAAGGATGTAGTGGAGGATGAAGAGGCGGAGACTGAACCAGCAGAGCCCAGCTCTGATCTGGAGGCAGGGAAGAACCTGCCAATGATCTATGGAGAGCCACCTGAAGATATGCTCAGCATCCCTACAATACCAC'
 
+# used if hg19 is not available
+ALTORG = 'sacCer3'
+ALTSEQ = 'ATTCTACTTTTCAACAATAATACATAAACatattggcttgtggtagCAACACTATCATGGTATCACTAACGTAAAAGTTCCTCAATATTGCAATTTGCTTGAACGGATGCTATTTCAGAATATTTCGTACTTACACAGGCCATACATTAGAATAATATGTCACATCACTGTCGTAACACTCT'
+
         # pamDesc can include additional options, like guidelen and base editor
         # added after the pam, e.g. "NGG-BE1". setupPamInfo(pam) will set the globals
         # based on it
 
-pamDesc = [('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1'),
+pamDesc = [('NGG','20bp-NGG - Sp Cas9, SpCas9-HF1, eSpCas9 1.1')
          #('NNG','20bp-NNG - Cas9 S. canis'),
          #('NNGT','20bp-NNGT - Cas9 S. canis - high efficiency PAM, recommended'),
          #('NAA','20bp-NAA - iSpyMacCas9'),
